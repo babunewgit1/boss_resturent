@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Heading from "../../../components/Heading/Heading";
 import Slider from "react-slick";
-import { Rating } from "@smastrom/react-rating";
-import "@smastrom/react-rating/style.css";
-import qoute from "../../../assets/xtra/qoute.svg";
+import ClientSays from "../../../components/ClientSays/ClientSays";
 
 const Review = () => {
   const settings = {
@@ -15,6 +13,15 @@ const Review = () => {
     autoplay: true,
     autoplaySpeed: 4000,
   };
+
+  const [review, setReview] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/review")
+      .then((res) => res.json())
+      .then((reviews) => setReview(reviews));
+  });
+
   return (
     <section id="review" className="review py-24">
       <Heading
@@ -24,118 +31,9 @@ const Review = () => {
       <div className="mycontainer">
         <div className="reviewWrapper">
           <Slider {...settings}>
-            <div className="reviewSlide text-center mt-9">
-              <div className="reviewValue">
-                <Rating
-                  className="mx-auto"
-                  style={{ maxWidth: 200 }}
-                  value={Math.round(3.4)}
-                  readOnly
-                />
-              </div>
-              <div className="qouteImg mt-6">
-                <img
-                  className="block mx-auto w-[80px]"
-                  src={qoute}
-                  alt="qoute images"
-                />
-              </div>
-              <div className="sildertext mt-6 px-32">
-                <p>
-                  Various version have evolved over the years, sometimes by
-                  accident, sometimes on purpose (injected humour and the like).
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                </p>
-                <h3 className="text-3xl font-semibold text-[#CD9003]">
-                  JANE DOE
-                </h3>
-              </div>
-            </div>
-            <div className="reviewSlide text-center mt-9">
-              <div className="reviewValue">
-                <Rating
-                  className="mx-auto"
-                  style={{ maxWidth: 200 }}
-                  value={Math.round(3.4)}
-                  readOnly
-                />
-              </div>
-              <div className="qouteImg mt-6">
-                <img
-                  className="block mx-auto w-[80px]"
-                  src={qoute}
-                  alt="qoute images"
-                />
-              </div>
-              <div className="sildertext mt-6 px-32">
-                <p>
-                  Various version have evolved over the years, sometimes by
-                  accident, sometimes on purpose (injected humour and the like).
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                </p>
-                <h3 className="text-3xl font-semibold text-[#CD9003]">
-                  JANE DOE
-                </h3>
-              </div>
-            </div>
-            <div className="reviewSlide text-center mt-9">
-              <div className="reviewValue">
-                <Rating
-                  className="mx-auto"
-                  style={{ maxWidth: 200 }}
-                  value={Math.round(3.4)}
-                  readOnly
-                />
-              </div>
-              <div className="qouteImg mt-6">
-                <img
-                  className="block mx-auto w-[80px]"
-                  src={qoute}
-                  alt="qoute images"
-                />
-              </div>
-              <div className="sildertext mt-6 px-32">
-                <p>
-                  Various version have evolved over the years, sometimes by
-                  accident, sometimes on purpose (injected humour and the like).
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                </p>
-                <h3 className="text-3xl font-semibold text-[#CD9003]">
-                  JANE DOE
-                </h3>
-              </div>
-            </div>
-            <div className="reviewSlide text-center mt-9">
-              <div className="reviewValue">
-                <Rating
-                  className="mx-auto"
-                  style={{ maxWidth: 200 }}
-                  value={Math.round(3.4)}
-                  readOnly
-                />
-              </div>
-              <div className="qouteImg mt-6">
-                <img
-                  className="block mx-auto w-[80px]"
-                  src={qoute}
-                  alt="qoute images"
-                />
-              </div>
-              <div className="sildertext mt-6 px-32">
-                <p>
-                  Various version have evolved over the years, sometimes by
-                  accident, sometimes on purpose (injected humour and the like).
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                </p>
-                <h3 className="text-3xl font-semibold text-[#CD9003]">
-                  JANE DOE
-                </h3>
-              </div>
-            </div>
+            {review.map((items) => {
+              return <ClientSays key={items._id} items={items}></ClientSays>;
+            })}
           </Slider>
         </div>
       </div>

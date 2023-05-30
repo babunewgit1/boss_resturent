@@ -7,8 +7,10 @@ import Call from "../Call/Call";
 import CRecom from "../CRecom/CRecom";
 import FromOurMenu from "../FromOurMenu/FromOurMenu";
 import Review from "../Review/Review";
+import useTitle from "../../../hooks/useTitle/useTitle";
 
 const Home = () => {
+  useTitle("Restu Boss | Home");
   return (
     <>
       <Bannar></Bannar>

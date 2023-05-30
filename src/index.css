@@ -116,3 +116,35 @@ body {
   left: 0;
   top: 50%;
 }
+
+.foodTabItems ul li {
+  border-bottom: 3px solid transparent;
+  padding-bottom: 8px;
+}
+
+.foodTabItems ul li.active {
+  color: #bb8506;
+  border-color: #bb8506;
+}
+
+.login {
+  background-image: url(./assets/login/login.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.loginWrapper {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+}
+
+.loginCaptcha a {
+  display: inline-block;
+  color: #000 !important;
+  font-weight: 600;
+}
+
+.drawerLef ul li a.active {
+  color: #fff;
+}
