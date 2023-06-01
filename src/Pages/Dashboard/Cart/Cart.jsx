@@ -94,9 +94,6 @@ const Cart = () => {
                             <FaTrashAlt></FaTrashAlt>
                           </span>
                         </button>
-                        <button onClick={() => up(items._id, items.quentity)}>
-                          up
-                        </button>
                       </p>
                     </td>
                   </tr>

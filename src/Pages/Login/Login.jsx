@@ -49,6 +49,17 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         if (user.email) {
+          const savedUser = { name: user.displayName, email: user.email };
+
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then(() => {});
           toast.success("Google login successfull");
           navigate(from, { replace: true });
         }
@@ -63,6 +74,17 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         if (user) {
+          const savedUser = { name: user.displayName, email: user.email };
+
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then(() => {});
           toast.success("Github login successfull");
           navigate(from, { replace: true });
         }
